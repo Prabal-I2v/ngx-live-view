@@ -1,0 +1,115 @@
+.toolbar-container{
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    gap: 38px;
+    background: var(--toolbar-container-bg-color) ;
+    width: 100%;
+    
+    .toolbar-heading{
+        font-family: 'Proxima Nova';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 26px;
+        color: var(--toolbar-heading-color);
+        flex: none;
+        order: 0;
+        flex-grow: 1;
+        z-index: 0;
+    }
+    .toolbar-tools{
+        display: flex;
+        flex-direction: row;
+        
+    }
+  }
+
+  .video-grid {
+    width: 270px; 
+    height: 425px; 
+    border-radius: 8px; 
+    background: var(--white-100, #FFF); 
+    overflow: hidden;
+    .header {
+        display: flex; 
+        width: 100%; 
+        padding: 8px 12px; 
+        align-items: center; 
+        border-bottom: 1px solid var(--grey-light-lavender-mist, #E6EBF2);
+        .heading {
+            flex: 1 0 0; 
+            color: var(--navy-500, #06283D); 
+            font-family: Proxima Nova; 
+            font-size: 18px; 
+            font-style: normal; 
+            font-weight: 500; 
+            line-height: 26px;
+        }
+        .icon {
+            display: flex; 
+            width: 28px; 
+            height: 28px; 
+            padding: 6px; 
+            justify-content: center; 
+            align-items: center; 
+            flex-shrink: 0;
+        }
+    }
+    .content {
+        display: flex; 
+        width: 100%; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        overflow: auto; 
+        height: 325px;
+        .view-items {
+            display: flex; 
+            align-items: center; 
+            align-self: stretch; 
+            padding: 0px 0px 0px 20px;
+            .input-box {
+                display: flex; 
+                align-items: center; 
+                gap: 8px; 
+                width: 90%;
+                .btn {
+                    height: 20px; 
+                    width: 20px; 
+                    margin: 0px;
+                }
+                .layout {
+                    display: flex; 
+                    padding: 12px 0px; 
+                    align-items: flex-end; 
+                    gap: 12px; 
+                    flex: 1 0 0; 
+                    border-bottom: 1px solid var(--grey-light-lavender-mist, #E6EBF2);
+                    .text {
+                        color: var(--grey-light-100, #5F6F94); 
+                        font-family: Proxima Nova; 
+                        font-size: 16px; 
+                        font-style: normal; 
+                        font-weight: 400; 
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+    }
+    .footer {
+        display: flex; 
+        width: 100%; 
+        padding: 12px 20px; 
+        justify-content: flex-end; 
+        align-items: center; 
+        gap: 8px; 
+        border-top: 
+        1px solid var(--grey-light-lavender-mist, #E6EBF2); 
+        background: var(--white-100, #FFF);
+    }
+  }

@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "ignorePatterns": ["!**/*", "node_modules/"],
+
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "src/Libraries/ngx-live-view/tsconfig.lib.json",
+          "src/Libraries/ngx-live-view/tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "lib",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "lib",
+            "style": "kebab-case"
+          }
+        ]
+      },
+      "plugins": ["html"]
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
+}

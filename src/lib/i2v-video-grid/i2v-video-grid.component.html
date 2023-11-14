@@ -1,0 +1,261 @@
+<div
+  id="outer{{ idx }}"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 100000000;
+    opacity: 1;
+    width: 100%;
+  ">
+  <div
+    class="header"
+    fxLayout="row"
+    fxLayoutAlign="start"
+    id="header_{{ idx }}">
+    <mat-icon
+      class="icon-display"
+      [ngStyle]="{ color: playbackMode === 'LIVE' ? 'green' : 'red' }"
+      >circle</mat-icon
+    >
+    <div *ngIf="attachedEvent">
+      {{ attachedEvent.event_name }}
+    </div>
+
+    <div *ngIf="attachedEvent" style="position: absolute; right: 30%">
+      {{ attachedEvent.event_time }}
+    </div>
+    <div
+      *ngIf="attachedEvent"
+      style="position: absolute; right: 13%; line-height: 20px; height: 20px">
+      <button
+        mat-button
+        *ngIf="!eventVerified"
+        class="icon-display"
+        style="
+          height: 100% !important;
+          padding: 0px !important;
+          margin: 0px !important;
+          min-width: 0px !important;
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+          line-height: 20px !important;
+        ">
+        Verify
+      </button>
+      <mat-icon style="font-size: 20px" *ngIf="eventVerified"
+        >verified_user</mat-icon
+      >
+    </div>
+    <div
+      id="close_btn{{ idx }}"
+      style="top: 0px; right: 0px; z-index: 100; float: right">
+      <button
+        mat-icon-button
+        title="close video"
+        class="icon-display close"
+        (click)="closeVideoPanel()"
+        style="
+          height: 100%;
+          width: 100%;
+          line-height: 20px;
+          background-color: red;
+        ">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div style="position: absolute; top: 0; right: 18px; z-index: 100">
+    <button
+      type="button"
+      *ngIf="playbackMode == 'REC'"
+      title="play Live Stream"
+      (click)="onLiveButtonClicked()"
+      style="padding: 3px; color: white; background: Red"
+      class="icon-display close">
+      LIVE
+    </button>
+  </div>
+
+  <div
+    style="
+      height: Calc(100% - 40px);
+      position: relative;
+      z-index: 1;
+      min-height: Calc(100% - 40px);
+      background: black;
+    "
+    id="appWebPlayer_{{ idx }}"
+    class="hasMenu">
+    <div style="position: absolute; left: 48%; top: 46%" *ngIf="!isLoading">
+      <mat-spinner diameter="30"></mat-spinner>
+    </div>
+
+    <div
+      *ngIf="resource"
+      style="height: 100%; position: absolute; top: 0; width: 100%"
+      (contextmenu)="onRightClick($event, { id: idx, resource:resource })">
+      <lib-app-web-player
+        #WebPlayer
+        [idx]="idx"
+        [playerServerIp]="playerServerIp"
+        [streamerIp]="streamerIp"
+        (onVideoStarted)="onVideoStartedFromWebPlayer()"
+        [resource]="resource"
+        [streamType]="streamType"
+        [playbackMode]="playbackMode"
+        [startTime]="timeRange ? timeRange.startTime : null"
+        [fill]="fill">
+      </lib-app-web-player>
+    </div>
+
+    <!--<div [hidden]="!ptzControl" id="ptz">
+        <i class="fa fa-arrow-up " (click)="ptzUp()" style="position:absolute;left:12.5px;top:22px;color:lightgreen;z-index:99"></i>
+        <i class="fa fa-arrow-down" (click)="ptzDown()" style="position:absolute;top:50px;left:12.5px;color:lightgreen;z-index:99"></i>
+        <i class="fa fa-arrow-left " (click)="ptzLeft()" style="position:absolute;top:35px;color:lightgreen;z-index:99"></i>
+        <i class="fa fa-arrow-right" (click)="ptzRight()" style="position:absolute;left:28px;top:35px;color:lightgreen;z-index:99"></i>
+      </div>-->
+  </div>
+  <div class="i2v_videogrid_footer" id="footer_{{ idx }}">
+    <div class="i2v_videogrid_footer_buttons">
+      <div
+        *ngIf="options.length > 5"
+        class="i2v_videogrid_footer_buttons_navbar">
+        <button mat-icon-button type="button" (click)="toggleshowoptions()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div *ngIf="showoptions" class="collapsedoptions">
+          <ng-container *ngFor="let option of options; let i = index">
+            <button
+              mat-icon-button
+              type="button"
+              title="{{ option.Title }}"
+              class="video-footer-buttons"
+              (click)="i2vfunctionCallback(option.Callback)">
+              <mat-icon>{{ option.Icon }}</mat-icon>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="options.length < 5">
+        <ng-container *ngFor="let option of options; let i = index">
+          <button
+            mat-icon-button
+            type="button"
+            title="{{ option.Title }}"
+            class="video-footer-buttons"
+            (click)="i2vfunctionCallback(option.Callback)">
+            <mat-icon>{{ option.Icon }}</mat-icon>
+          </button>
+        </ng-container>
+      </div>
+      <button
+        mat-icon-button
+        type="button"
+        title="clickSnapShot"
+        class="video-footer-buttons"
+        (click)="clickSnapShot()">
+        <mat-icon>camera_enhance</mat-icon>
+      </button>
+    </div>
+    <div class="i2v_videogrid_footer_buttons">
+      <span *ngIf="info">{{ info.name }}--{{ info.number }}</span>
+      <div  *ngIf="resource">{{ resource.name.length <= 30 ?  resource.name :  resource.name.substring(0, 30) + '...'  + ' ' + ip}}</div>
+      <button
+        mat-icon-button
+        type="button"
+        *ngIf="!isFullScreen"
+        title="Full Screen"
+        class="video-footer-buttons"
+        (click)="fullscreen()">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        type="button"
+        *ngIf="isFullScreen"
+        title="Full Screen"
+        class="video-footer-buttons"
+        (click)="fullscreen()">
+        <mat-icon>fullscreen_exit</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- <app-context-menu #VideoContextMenu (onClick)="onSelect($event)"></app-context-menu> -->
+  <div
+    class="i2v_videogrid_contextmenu"
+    [style.left]="menuTopLeftPosition.x"
+    [style.top]="menuTopLeftPosition.y"
+    [matMenuTriggerFor]="rightMenu"></div>
+
+  <!-- standard material menu -->
+  <mat-menu
+    class="i2v-grid-video-menu"
+    #rightMenu="matMenu"
+    style="z-index: 100">
+    <ng-template matMenuContent let-item="item">
+      <button mat-menu-item 
+      [matMenuTriggerFor]="stream"
+        [matMenuTriggerData]="{ id: item.content }"
+        >streams</button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="VideoFit"
+        [matMenuTriggerData]="{ id: item.content }">
+        Video-fit
+      </button>
+      <button mat-menu-item *ngIf="!isFullScreen" (click)="fullscreen()">
+        fullscreen
+      </button>
+      <button mat-menu-item *ngIf="isFullScreen" (click)="fullscreen()">
+        fullscreen_exit
+      </button>
+      <button mat-menu-item (click)="clickSnapShot()">SnapShot</button>
+    </ng-template>
+  </mat-menu>
+  <mat-menu class="i2v-grid-video-menu" #VideoFit="matMenu">
+    <!-- for videoFit loop on items like { name: "Fill", value: "fill" },-->
+    <ng-template matMenuContent let-id="id">
+      <button
+        mat-menu-item
+        (click)="onVideoFitChanged(fit.value, id)"
+        *ngFor="let fit of videoFit">
+        {{ fit.name }}
+      </button>
+    </ng-template>
+  </mat-menu>
+  <mat-menu class="i2v-grid-video-menu" #stream="matMenu">
+    <!-- for videoFit loop on items like { name: "Fill", value: "fill" },-->
+    <ng-template matMenuContent let-id="id">
+      <button
+        mat-menu-item
+        (click)="onStreamChanged(stream, id)"
+        *ngFor="let stream of stream_default">
+        {{ stream.name }}
+      </button>
+      <button
+        mat-menu-item
+        [matMenuTriggerFor]="AnalyticStreams">
+        Analytic Streams
+      </button>
+    </ng-template>
+  </mat-menu>
+  <mat-menu class="i2v-grid-video-menu" #AnalyticStreams="matMenu">
+    <!-- for videoFit loop on items like { name: "Fill", value: "fill" },-->
+    <ng-template matMenuContent let-id="id">
+      <button
+        mat-menu-item
+        (click)="onStreamChanged(stream, id)"
+        *ngFor="let stream of streams_all">
+        {{ stream.name }}
+      </button>
+    </ng-template>
+  </mat-menu>
+  <!--<video *ngIf="url"  [id]="idx"  class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls preload="auto" width="640" height="264" poster="//s3.amazonaws.com/lonnygomes.com/assets/8269691015_hd_poster.jpg" vjs-video [vjsOptions]="opts">
+        <source [src]="url" type='video/mov' />
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>-->
+</div>

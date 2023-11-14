@@ -1,0 +1,135 @@
+<div class="modal">
+  <div class="header-container">
+    <button *ngIf="showBackButton" (click)="backButtonCallback()" aria-label="Close dialog"
+      class="medium flex-row-center-center i2v-btn-icon tertiary-default" libSvgElement
+      [appSvg]="'assets/Outline/chevron-left.svg'">
+    </button>
+    <span class="heading">{{heading | translate}}</span>
+    <button (click)="dialogRef.close()" aria-label="Close dialog"
+      class="medium flex-row-center-center i2v-btn-icon tertiary-default" libSvgElement
+      [appSvg]="'assets/Outline/x.svg'">
+    </button>
+  </div>
+  <div class="event-details-container">
+
+    <div class="event-details-header-container">
+      <div class="event-details-header-details">
+        <span class="ex-large flex-row-center-center i2v-btn-icon secondary-outline ng-star-inserted" libSvgElement
+          [appSvg]="'assets/fill/camera-bullet.svg'">
+        </span>
+        <div class="event-details-header-details-properties-container">
+          <div class="event-details-header-details-properties-heading">
+            <span style="width: 70%;display: flex;overflow-x: clip;" *ngIf="event.videoSourceName">{{event.videoSourceName}}</span>
+            <span *ngIf="!event.videoSourceName">Device Name is Not Present</span>
+          </div>
+          <div class="event-details-header-details-properties">
+            <ng-container *ngIf="event.videoSourceId !== undefined && event.videoSourceId !== ''">
+              <span>{{event.videoSourceId}}</span>
+            </ng-container>
+            <ng-container *ngIf="event.ip !== undefined && event.ip !== ''">
+              <span class="propertywithsvg" libSvgElement [appSvg]="'assets/fill/divider.svg'" [x-position]="'left'"
+                [size]="'4'">{{event.ip}}</span>
+            </ng-container>
+            <ng-container *ngIf="event.time !== undefined && event.time !== ''">
+              <span libSvgElement [appSvg]="'assets/fill/divider.svg'" [x-position]="'left'"
+                [size]="'4'">{{event.time}}</span>
+            </ng-container>
+            <ng-container *ngIf="event.serverName !== undefined && event.serverName !== ''">
+              <span libSvgElement [appSvg]="'assets/fill/divider.svg'" [x-position]="'left'"
+                [size]="'4'">{{event.serverName}}</span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-details-header-options">
+        <span class="flex-row-space-between-center i2v-chips danger-default large" *ngIf="event?.label">{{event.label |
+          titlecase}}</span>
+        <ng-container *ngIf="event?.actionLabel">
+          <span class="flex-row-space-between-center i2v-chips danger-default large"
+            *ngFor="let label of event.actionLabel">
+            {{label | titlecase}}
+          </span></ng-container>
+
+      </div>
+    </div>
+
+    <div class="event-details-images-container" *ngIf="this.data.event.component == '' && event.images.length>0"
+      [ngClass]="event.images.length<=5 ? 'angry-grid-' + event.images.length : 'angry-grid-6'">
+      <ng-container *ngFor="let image of event.images; let i = index;">
+        <a class="event-details-image" *ngIf="i!=6" id="item-{{i}}" href={{image}} data-fancybox="gallery">
+          <img src="{{image}}">
+        </a>
+        <!-- <div style="background-image: url(assets/no-image.jpg);"></div> -->
+        <!--Enable only when event images are greater than 5 by check eventimages length in *ngIf  -->
+        <a *ngIf="i==6" href="assets/7.jpg" data-fancybox="gallery">
+          <button class="flex-row-space-between-center i2v-btn secondary-outline small ng-star-inserted"
+            id="item-5"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.00039 0.399902C1.11674 0.399902 0.400391 1.11625 0.400391 1.9999V3.5999C0.400391 4.48356 1.11674 5.1999 2.00039 5.1999H3.60039C4.48405 5.1999 5.20039 4.48356 5.20039 3.5999V1.9999C5.20039 1.11625 4.48405 0.399902 3.60039 0.399902H2.00039Z"
+                fill="#5F6F94" />
+              <path
+                d="M2.00039 6.7999C1.11674 6.7999 0.400391 7.51625 0.400391 8.3999V9.9999C0.400391 10.8836 1.11674 11.5999 2.00039 11.5999H3.60039C4.48405 11.5999 5.20039 10.8836 5.20039 9.9999V8.3999C5.20039 7.51625 4.48405 6.7999 3.60039 6.7999H2.00039Z"
+                fill="#5F6F94" />
+              <path
+                d="M6.80039 1.9999C6.80039 1.11625 7.51674 0.399902 8.40039 0.399902H10.0004C10.884 0.399902 11.6004 1.11625 11.6004 1.9999V3.5999C11.6004 4.48356 10.884 5.1999 10.0004 5.1999H8.40039C7.51674 5.1999 6.80039 4.48356 6.80039 3.5999V1.9999Z"
+                fill="#5F6F94" />
+              <path
+                d="M6.80039 8.3999C6.80039 7.51625 7.51674 6.7999 8.40039 6.7999H10.0004C10.884 6.7999 11.6004 7.51625 11.6004 8.3999V9.9999C11.6004 10.8836 10.884 11.5999 10.0004 11.5999H8.40039C7.51674 11.5999 6.80039 10.8836 6.80039 9.9999V8.3999Z"
+                fill="#5F6F94" />
+            </svg> View all photos
+          </button>
+        </a>
+      </ng-container>
+    </div>
+    <div class="event-details-images-container" *ngIf="event.images.length==0" [ngClass]="'angry-grid-1'">
+      <div class="event-details-image" href="assets/no-image.jpg" id="item-0"
+        style="background:url(assets/no-image.jpg); background-size: 100% 100%; background-repeat: no-repeat;">
+      </div>
+    </div>
+
+    <div class="event-details-external-container"
+      [ngStyle]="{'display' : (this.event.component != '') ? 'flex' : 'none'}">
+      <ng-template #templateContainer></ng-template>
+    </div>
+    <div class="event-details-footer-container" *ngIf="showablePropertiesLength > 0">
+      <span class="event-details-footer-heading">
+        Event properties
+      </span>
+      <div class="event-details-footer-details-container">
+        <div class="event-details-footer-details" *ngFor="let property of event.showableProperties | keyvalue">
+          <ng-container
+            *ngIf="property.value!=undefined && (property.key != 'AnalyticsAdded' && property.key != 'AnalyticsRemoved')">
+            <span class="event-details-footer-details-key">{{property.key | titlecase}}</span>
+            <span
+              class="i2v-chips flex-row-center-center large primary-default-disabled ng-star-inserted">{{property.value}}</span>
+          </ng-container>
+
+          <!-- only when analytics applied to server changes -->
+          <ng-container *ngIf="property.value!='' && property.key == 'AnalyticsAdded'">
+            <span class="event-details-footer-details-key">{{property.key | titlecase}}</span>
+            <span *ngFor="let analytic of property.value | keyvalue"
+              class="i2v-chips flex-row-center-center large primary-default-disabled ng-star-inserted">{{analytic.value}}</span>
+          </ng-container>
+          <ng-container *ngIf="property.value!='' && property.key == 'AnalyticsRemoved'">
+            <span class="event-details-footer-details-key">{{property.key | titlecase}}</span>
+            <span *ngFor="let analytic of property.value | keyvalue"
+              class="i2v-chips flex-row-center-center large primary-default-disabled ng-star-inserted">{{analytic.value}}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="footer-container">
+    <button *ngIf="showPreviousButton" class="i2v-btn primary-default medium" (click)="showPreviousEvent()">Previous
+      Event</button>
+    <div class="footer-container-right">
+      <button *ngIf="showNextButton" class="i2v-btn primary-default medium" (click)="showNextEvent()">Next
+        Event</button>
+      <button class="i2v-btn secondary-outline medium" (click)="dialogRef.close()">Close</button>
+    </div>
+  </div>
+</div>

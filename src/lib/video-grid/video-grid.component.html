@@ -1,0 +1,28 @@
+<div style="
+    height: 100%;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  ">
+
+  <div id="i2v-video-grid-parent">
+    <lib-app-grid
+    id="parentGridLiveView"
+      #appGrid
+      [idx]="'Grid'"
+      [streams]="streams"   
+      [gridMode]="gridMode"
+      [playDuplicate]="playDuplicate"
+      [playerServerIp]="playerServerIp"
+      [streamerIp]="streamerIp"
+      [hideTime]="false"
+      [header]="false"
+      (videoStartEmitterFromGrid)="VideoGridVideoStarted($event)"
+      (clearGrid)="onClearGrid()"
+      (onFunctionClick)="videogridfunctionCallback($event)"
+      (CloseElement)="onElementRemovedFromGrid($event)"
+      (dimensionChange)="onDimensionChange($event)">
+      </lib-app-grid>
+  </div>
+</div>

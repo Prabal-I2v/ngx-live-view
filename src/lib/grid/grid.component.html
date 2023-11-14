@@ -1,0 +1,39 @@
+<div class="grid-container" [style.grid-template]="gridItemDict[selectedView.id].gridTemplate">
+    <div
+      *ngFor="let item of gridItemDict[selectedView.id].gridItems; let i = index"
+      class="grid-item-container"
+      [ngStyle]="{
+        'grid-row-start': item.rowStart,
+        'grid-row-end': item.rowEnd,
+        'grid-column-start': item.colStart,
+        'grid-column-end': item.colEnd
+      }"
+      [ngClass]="{
+        'special-item': selectedView && selectedView.hasSpecial && i === selectedView.SpecialElement
+      }"
+    >
+      <div [ngClass]="this._NgxLiveViewService.theme == 'light' ? 'grid-item-light' : 'grid-item-dark'" class="grid-item droppable gridDroppableZone" style="box-sizing: content-box;max-width: 100%;min-width: auto;" id="i2v-grid-item_{{i}}">
+        <!-- image tag for placeholder -->
+        <!-- <img
+          *ngIf="GridArray[i] == ''"
+          src="assets/img/greyBorder.png"
+          alt="placeholder" style="height: inherit;;object-fit: contain;"/> -->
+        <lib-i2v-video-grid
+              *ngIf="
+                gridMode == 'general' &&
+                GridArray[i] != ''
+              "
+              id="i2v-video-grid-tile_{{i}}"
+              [streams]="streams"
+              [idx]="GridArray[i].id + '_' + i"
+              [playbackMode]="GridArray[i].playbackMode"
+              [resource]="GridArray[i]"
+              [options]="options"
+              [playerServerIp]="playerServerIp"
+              [streamerIp]="streamerIp"
+              (VideoStartedFromi2vVideoGrid)="onVideoStarted($event)"
+              (CloseLiveFeed)="closeElement($event)">
+            </lib-i2v-video-grid>
+      </div>
+    </div>
+  </div>

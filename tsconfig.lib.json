@@ -1,0 +1,25 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../../tsconfig.json",
+  "paths": {
+    "@angular/*": [
+       "../../../node_modules/@angular/*"
+    ],
+ },
+  "compilerOptions": {
+    "outDir": "../../../out-tsc/lib",
+    "target": "es2015",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "sourceMap": true,
+    "types": ["jest"],
+    "lib": ["dom", "es2018"],
+   
+  },
+
+  "angularCompilerOptions": {
+    "preserveSymlinks": true
+  },	
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
+}

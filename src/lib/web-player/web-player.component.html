@@ -1,0 +1,20 @@
+<div
+  [id]="'videoContainer_' + idx"
+  style="
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "></div>
+<!--<div *ngIf="isDahua" style="height:100%;position:absolute;top:0;width:100%">
+    <app-dahua-video-plugin [isTwoWayAudio]="liveViewService.isTwoWayAudio" [resource]="resource" [timeRange]="timeRange" [playbackMode]="playbackMode"></app-dahua-video-plugin>
+</div>
+<div *ngIf="isVlc" style="height:100%;position:absolute;top:0;width:100%">
+    <app-vlc-video-plugin [idx]="idx" [url]="url" [isTwoWayAudio]="liveViewService.isTwoWayAudio"></app-vlc-video-plugin>
+</div>-->
+<div style="position: absolute; left: 50%; top: 50%" *ngIf="isLoading">
+  <i
+    class="fa fa-circle-o-notch fa-spin"
+    style="font-size: 24px; color: white"></i>
+</div>

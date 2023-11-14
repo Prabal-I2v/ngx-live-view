@@ -1,0 +1,90 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" rx="4" fill="#F2F5FA"/>
+<g clip-path="url(#clip0_2554_23858)">
+<mask id="path-3-inside-1_2554_23858" fill="white">
+<path d="M4 8C4 5.79086 5.79086 4 8 4H22V22H4V8Z"/>
+</mask>
+<path d="M4 8C4 5.79086 5.79086 4 8 4H22V22H4V8Z" fill="white"/>
+<path d="M2 8C2 4.68629 4.68629 2 8 2H22V6H8C6.89543 6 6 6.89543 6 8H2ZM22 24H2L6 20H22V24ZM2 24V8C2 4.68629 4.68629 2 8 2V6C6.89543 6 6 6.89543 6 8V20L2 24ZM22 4V22V4Z" fill="#5F6F94" mask="url(#path-3-inside-1_2554_23858)"/>
+<mask id="path-5-inside-2_2554_23858" fill="white">
+<path d="M22 4H40V22H22V4Z"/>
+</mask>
+<path d="M22 4H40V22H22V4Z" fill="white"/>
+<path d="M22 4V2H20V4H22ZM22 22H20V24H22V22ZM22 6H40V2H22V6ZM40 20H22V24H40V20ZM24 22V4H20V22H24Z" fill="#5F6F94" mask="url(#path-5-inside-2_2554_23858)"/>
+<mask id="path-7-inside-3_2554_23858" fill="white">
+<path d="M40 4H58V22H40V4Z"/>
+</mask>
+<path d="M40 4H58V22H40V4Z" fill="white"/>
+<path d="M40 4V2H38V4H40ZM40 22H38V24H40V22ZM40 6H58V2H40V6ZM58 20H40V24H58V20ZM42 22V4H38V22H42Z" fill="#5F6F94" mask="url(#path-7-inside-3_2554_23858)"/>
+<mask id="path-9-inside-4_2554_23858" fill="white">
+<path d="M58 4H72C74.2091 4 76 5.79086 76 8V22H58V4Z"/>
+</mask>
+<path d="M58 4H72C74.2091 4 76 5.79086 76 8V22H58V4Z" fill="white"/>
+<path d="M58 4V2H56V4H58ZM76 22V24H78V22H76ZM58 22H56V24H58V22ZM58 6H72V2H58V6ZM74 8V22H78V8H74ZM76 20H58V24H76V20ZM60 22V4H56V22H60ZM72 6C73.1046 6 74 6.89543 74 8H78C78 4.68629 75.3137 2 72 2V6Z" fill="#5F6F94" mask="url(#path-9-inside-4_2554_23858)"/>
+</g>
+<mask id="path-11-inside-5_2554_23858" fill="white">
+<path d="M4 22H22V40H4V22Z"/>
+</mask>
+<path d="M4 22H22V40H4V22Z" fill="white"/>
+<path d="M4 40H2V42H4V40ZM22 38H4V42H22V38ZM6 40V22H2V40H6Z" fill="#5F6F94" mask="url(#path-11-inside-5_2554_23858)"/>
+<mask id="path-13-inside-6_2554_23858" fill="white">
+<path d="M22 22H40V40H22V22Z"/>
+</mask>
+<path d="M22 22H40V40H22V22Z" fill="white"/>
+<path d="M22 40H20V42H22V40ZM40 38H22V42H40V38ZM24 40V22H20V40H24Z" fill="#5F6F94" mask="url(#path-13-inside-6_2554_23858)"/>
+<mask id="path-15-inside-7_2554_23858" fill="white">
+<path d="M40 22H58V40H40V22Z"/>
+</mask>
+<path d="M40 22H58V40H40V22Z" fill="white"/>
+<path d="M40 40H38V42H40V40ZM58 38H40V42H58V38ZM42 40V22H38V40H42Z" fill="#5F6F94" mask="url(#path-15-inside-7_2554_23858)"/>
+<mask id="path-17-inside-8_2554_23858" fill="white">
+<path d="M58 22H76V40H58V22Z"/>
+</mask>
+<path d="M58 22H76V40H58V22Z" fill="white"/>
+<path d="M76 40V42H78V40H76ZM58 40H56V42H58V40ZM74 22V40H78V22H74ZM76 38H58V42H76V38ZM60 40V22H56V40H60Z" fill="#5F6F94" mask="url(#path-17-inside-8_2554_23858)"/>
+<mask id="path-19-inside-9_2554_23858" fill="white">
+<path d="M4 40H22V58H4V40Z"/>
+</mask>
+<path d="M4 40H22V58H4V40Z" fill="white"/>
+<path d="M4 58H2V60H4V58ZM22 56H4V60H22V56ZM6 58V40H2V58H6Z" fill="#5F6F94" mask="url(#path-19-inside-9_2554_23858)"/>
+<mask id="path-21-inside-10_2554_23858" fill="white">
+<path d="M22 40H40V58H22V40Z"/>
+</mask>
+<path d="M22 40H40V58H22V40Z" fill="white"/>
+<path d="M22 58H20V60H22V58ZM40 56H22V60H40V56ZM24 58V40H20V58H24Z" fill="#5F6F94" mask="url(#path-21-inside-10_2554_23858)"/>
+<mask id="path-23-inside-11_2554_23858" fill="white">
+<path d="M40 40H58V58H40V40Z"/>
+</mask>
+<path d="M40 40H58V58H40V40Z" fill="white"/>
+<path d="M40 58H38V60H40V58ZM58 56H40V60H58V56ZM42 58V40H38V58H42Z" fill="#5F6F94" mask="url(#path-23-inside-11_2554_23858)"/>
+<mask id="path-25-inside-12_2554_23858" fill="white">
+<path d="M58 40H76V58H58V40Z"/>
+</mask>
+<path d="M58 40H76V58H58V40Z" fill="white"/>
+<path d="M76 58V60H78V58H76ZM58 58H56V60H58V58ZM74 40V58H78V40H74ZM76 56H58V60H76V56ZM60 58V40H56V58H60Z" fill="#5F6F94" mask="url(#path-25-inside-12_2554_23858)"/>
+<mask id="path-27-inside-13_2554_23858" fill="white">
+<path d="M4 58H22V76H8C5.79086 76 4 74.2091 4 72V58Z"/>
+</mask>
+<path d="M4 58H22V76H8C5.79086 76 4 74.2091 4 72V58Z" fill="white"/>
+<path d="M4 58H22H4ZM22 78H8C4.68629 78 2 75.3137 2 72H6C6 73.1046 6.89543 74 8 74H22V78ZM8 78C4.68629 78 2 75.3137 2 72V58H6V72C6 73.1046 6.89543 74 8 74V78ZM22 58V76V58Z" fill="#5F6F94" mask="url(#path-27-inside-13_2554_23858)"/>
+<mask id="path-29-inside-14_2554_23858" fill="white">
+<path d="M22 58H40V76H22V58Z"/>
+</mask>
+<path d="M22 58H40V76H22V58Z" fill="white"/>
+<path d="M22 76H20V78H22V76ZM40 74H22V78H40V74ZM24 76V58H20V76H24Z" fill="#5F6F94" mask="url(#path-29-inside-14_2554_23858)"/>
+<mask id="path-31-inside-15_2554_23858" fill="white">
+<path d="M40 58H58V76H40V58Z"/>
+</mask>
+<path d="M40 58H58V76H40V58Z" fill="white"/>
+<path d="M40 76H38V78H40V76ZM58 74H40V78H58V74ZM42 76V58H38V76H42Z" fill="#5F6F94" mask="url(#path-31-inside-15_2554_23858)"/>
+<mask id="path-33-inside-16_2554_23858" fill="white">
+<path d="M58 58H76V72C76 74.2091 74.2091 76 72 76H58V58Z"/>
+</mask>
+<path d="M58 58H76V72C76 74.2091 74.2091 76 72 76H58V58Z" fill="white"/>
+<path d="M58 58H76H58ZM78 72C78 75.3137 75.3137 78 72 78H56L60 74H72C73.1046 74 74 73.1046 74 72H78ZM56 78V58H60V74L56 78ZM78 58V72C78 75.3137 75.3137 78 72 78V74C73.1046 74 74 73.1046 74 72V58H78Z" fill="#5F6F94" mask="url(#path-33-inside-16_2554_23858)"/>
+<defs>
+<clipPath id="clip0_2554_23858">
+<path d="M4 8C4 5.79086 5.79086 4 8 4H72C74.2091 4 76 5.79086 76 8V22H4V8Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>

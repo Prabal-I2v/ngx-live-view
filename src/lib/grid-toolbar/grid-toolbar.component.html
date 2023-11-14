@@ -1,0 +1,64 @@
+<div class="toolbar-container">
+  <div class="toolbar-heading"> {{selectedView.heading }} ({{ selectedView.Text === '1+2(2)' ? '1+2' : selectedView.Text }}) </div>
+  <div class="toolbar-tools">
+    <button matTooltip="{{'Clear grid' | translate}}"
+      class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+      [appSvg]="'assets/Outline/view-sequences.svg'" (click)="clearGrid()">
+    </button>
+    <button matTooltip="{{'Video grid' | translate}}" [matMenuTriggerFor]="menu" (click)="toggleCheck()"
+      #menuTrigger="matMenuTrigger" class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+      [appSvg]="'assets/Outline/view-grid.svg'">
+    </button>
+    <button matTooltip="{{'Full screen' | translate}}"
+      class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+      [appSvg]="'assets/Outline/arrows-expand.svg'" (click)="goFullScreen()">
+    </button>
+    <button matTooltip="{{'Change video fit' | translate}}" [matMenuTriggerFor]="VideoFit"
+      class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+      [appSvg]="'assets/Outline/aspect-ratio.svg'">
+    </button>
+    <button matTooltip="{{'Click grids snapshot' | translate}}" (click)="clickSnapshot()"
+      class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+      [appSvg]="'assets/Outline/camera.svg'">
+    </button>
+
+    <mat-menu backdropClass="options-menu" #VideoFit="matMenu">
+      <ng-template matMenuContent let-id="id">
+        <button mat-menu-item style="height: 100%;width: 100%;" (click)="changeAllVideoFit(fit.value)"
+          *ngFor="let fit of videoGridService.videoFit">
+          <span *ngIf="videoGridService.currentVideoFit == fit.value" style="color: green">{{ fit.name }}</span>
+          <span *ngIf="videoGridService.currentVideoFit != fit.value">{{ fit.name }}</span>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <mat-menu backdropClass="options-menu" #menu="matMenu" (closed)="onMenuClosed()">
+      <div class = "video-grid" *ngIf="check">
+        <div class = "header">
+          <div class = "heading"> 
+            Change View 
+          </div>
+          <button class = "icon i2v-btn tertiary-default" libSvgElement (click)="closeMenu()" [appSvg]="'assets/Outline/x.svg'" [size] = "'24'" [fill-color] = "'#5F6F94'"> </button>
+        </div>
+        <div class = "content" (click) = "radioButtonClicked($event)">
+          <div class = "view-items" *ngFor="let view of videoGridService._ViewList; let arrayIndex = index">
+            <label class = "input-box">
+              <input (click)="index_ = arrayIndex;" class = "btn" type="radio" [checked]="arrayIndex === indexselected" class="i2v-radio primary default medium" name="radioGroup">
+              <div class = "layout">
+                <div libSvgElement [appSvg]="'/assets/layout_icons/' + view.Text + '.svg'"></div>
+                <div class = "text"> {{ view.Text === '1+2(2)' ? '1+2' : view.Text }} </div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class = "footer">
+          <button (click)="viewSelected(index_)" _ngcontent-pkf-c18="" class="i2v-btn medium primary-default" id="i2v-btn primary-default medium"> Apply </button>
+          <button (click)="closeMenu()" _ngcontent-xxi-c18="" class="i2v-btn medium secondary-outline" id="i2v-btn secondary-outline medium"> Cancel </button>
+        </div>
+      </div>
+    </mat-menu>
+
+    <!-- (Show/Hide Details & Boundary) -->
+    <button matTooltip='{{"Toggle stich videos" | translate}}' class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement (click)="stichVideos()" [appSvg]="'assets/Outline/stitch-video.svg'"> </button>
+  </div>
+</div>

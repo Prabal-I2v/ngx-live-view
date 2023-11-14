@@ -1,0 +1,14 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" rx="4" fill="#F2F5FA"/>
+<path d="M5 8C5 6.34315 6.34315 5 8 5H72C73.6569 5 75 6.34315 75 8V39H5V8Z" fill="white" stroke="#5F6F94" stroke-width="2"/>
+<mask id="path-3-inside-1_2554_23770" fill="white">
+<path d="M4 40H40V76H8C5.79086 76 4 74.2091 4 72V40Z"/>
+</mask>
+<path d="M4 40H40V76H8C5.79086 76 4 74.2091 4 72V40Z" fill="white"/>
+<path d="M4 40H40H4ZM40 78H8C4.68629 78 2 75.3137 2 72H6C6 73.1046 6.89543 74 8 74H40V78ZM8 78C4.68629 78 2 75.3137 2 72V40H6V72C6 73.1046 6.89543 74 8 74V78ZM40 40V76V40Z" fill="#5F6F94" mask="url(#path-3-inside-1_2554_23770)"/>
+<mask id="path-5-inside-2_2554_23770" fill="white">
+<path d="M40 40H76V72C76 74.2091 74.2091 76 72 76H40V40Z"/>
+</mask>
+<path d="M40 40H76V72C76 74.2091 74.2091 76 72 76H40V40Z" fill="white"/>
+<path d="M40 40H76H40ZM78 72C78 75.3137 75.3137 78 72 78H38L42 74H72C73.1046 74 74 73.1046 74 72H78ZM38 78V40H42V74L38 78ZM78 40V72C78 75.3137 75.3137 78 72 78V74C73.1046 74 74 73.1046 74 72V40H78Z" fill="#5F6F94" mask="url(#path-5-inside-2_2554_23770)"/>
+</svg>

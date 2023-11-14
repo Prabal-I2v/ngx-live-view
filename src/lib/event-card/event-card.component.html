@@ -1,0 +1,128 @@
+<div class="events">
+  <div class="eventToolbar">
+    <div class="eventCardToolbar-header">
+      <!-- <button matTooltip="Tree View Slider" class="large i2v-btn-icon tertiary-default flex-row-center-center"
+        libSvgElement [appSvg]="'assets/Outline/right-side-panel.svg'"
+        (click)="hideEventsCardView()">
+      </button> -->
+      <span class="eventCardToolbar-heading">{{ "Events" | titlecase | translate}}</span>
+      <div class="eventCard-headerOptions">
+        <!-- <button   mat-icon-button (click)="changeLanguage()">
+          Change
+        </button> -->
+        <button class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+          (click)="onFilterClick($event)" *ngIf="appliedFilterCount == 0" [appSvg]="'assets/Outline/filter.svg'"
+          matTooltip="{{'Filter' | lowercase | translate}}">
+        </button>
+        <button class="large i2v-btn-icon tertiary-default flex-row-center-center" libSvgElement
+          (click)="onFilterClick($event)" *ngIf="appliedFilterCount > 0" [matBadge]="appliedFilterCount"
+          [appSvg]="'assets/Outline/filter.svg'" matTooltip="{{'Filter' | lowercase | translate}}">
+        </button>
+        <button class="large i2v-btn-icon tertiary-default flex-row-center-center" [matMenuTriggerFor]="optionsMenu"
+          libSvgElement [appSvg]="'assets/fill/horizontal.svg'" [size]="'20'">
+        </button>
+        <mat-menu #optionsMenu="matMenu" style="z-index: 100" backdropClass="options-menu">
+          <button mat-menu-item class="options-property" (click)="clearList()">{{ "Clear List" | lowercase | translate
+            }}</button>
+          <ng-container *ngFor="let option of toolbarOptions; let i = index">
+            <button mat-menu-item class="options-property" (click)="option.Callback()">
+              {{ option.Title }}
+            </button>
+          </ng-container>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="eventCard-outer-container" id="eventCard-outer-container">
+
+    <!-- Context Menu Start-->
+
+    <!-- <mat-menu #rightMenu="matMenu" style="z-index: 100">
+        <ng-template matMenuContent let-item="item">
+          <button mat-menu-item>{{ item.content.EventId }}</button>
+          <button mat-menu-item (click)="clearList()">{{ "Clear List" | lowercase | translate }}</button>
+          <button mat-menu-item (click)="showEventDetails(item.content)">
+            {{ "View Event" | lowercase | translate }}
+          </button>
+        </ng-template>
+      </mat-menu> -->
+
+    <!-- <div class="eventcard-contextmenu" [style.left]="menuTopLeftPosition.x" [style.top]="menuTopLeftPosition.y"
+      [matMenuTriggerFor]="rightMenu"></div> -->
+
+
+    <!-- Context Menu End -->
+
+    <div class="eventCard-inner-container" *ngFor="let event of EventCards"
+      [ngClass]="EventCards.length > 0 ? 'visible' : 'hide'">
+      <span class="eventCard-Tag" *ngIf="event?.label !== undefined && event?.label !== ''">{{event?.label}}</span>
+      <div [ngClass]="event?.label !== undefined && event?.label !== '' ? 'labelledCard' : ''"
+        style="--label-color : Red" class="eventCard-header" (dblclick)="showEventDetails(event)"
+        (contextmenu)="onRightClick($event, { content: event })">
+        <div style="position: relative;">
+          <div *ngIf="event?.snapshotPath && event?.snapshotPath != ''" class="eventCard-image"
+            (click)="showEventDetails(event)">
+            <img src="{{event.snapshotPath}}">
+          </div>
+          <div *ngIf="!event.snapshotPath || event.snapshotPath == ''" class="eventCard-image"  (click)="showEventDetails(event)"
+            style="background-image: url(assets/no-image.jpg); background-size: 100% 100%; background-repeat: no-repeat;">
+          </div>
+          <div class="eventCard-image-status" libSvgElement [appSvg]="'assets/fill/va/'+event.icon" [size]="'19'">
+          </div>
+        </div>
+        <div class="eventCard-details-container">
+          <p class="eventCard-details-heading">{{ event.videoSourceName}}</p>
+          <p class="eventCard-details-sub-heading">{{ event.eventName}}</p>
+          <div class="eventCard-details">
+            <ng-container *ngFor=" let property of event.cardProperties">
+              <ng-container *ngIf="property.value!=undefined && (event.eventName != 'Analytics_Added' && event.eventName != 'Analytics_Removed')">
+                <span class="i2v-chips primary-outline medium flex-row-center-center">
+                  {{ property.key }} : {{ property.value }}</span>
+              </ng-container>
+              <ng-container *ngIf="property.value!='' && event.eventName == 'Analytics_Added'">
+                <span class="i2v-chips success-outline-active medium flex-row-center-center" *ngFor="let analytic of property.value">
+                  {{ analytic }}</span>
+              </ng-container>
+              <ng-container *ngIf="property.value!='' && event.eventName == 'Analytics_Removed'">
+                <span class="i2v-chips danger-outline-active medium flex-row-center-center" *ngFor="let analytic of property.value">
+                  {{ analytic }}</span>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="event.label !== undefined && event.label !== '' ? 'labelledCard' : ''" style="--label-color : Red"
+        class="eventCard-footer">
+        <ng-container *ngIf="event?.time !== undefined">
+          <div style="display: flex; align-items: stretch; justify-content: center; gap: 5px;" libSvgElement
+            [appSvg]="'assets/Outline/clock.svg'" [size]="'14'" [x-position]="'left'">
+            <span> {{event.time}} </span>
+          </div>
+          <!-- <div style="display: flex; align-items: center; justify-content: center;">
+            <span> {{event.time}} </span>
+          </div> -->
+        </ng-container>
+        <ng-container *ngIf="event?.folder !== undefined">
+          <span libSvgElement [appSvg]="'assets/fill/divider.svg'" [size]="'4'"></span>
+          <div libSvgElement [appSvg]="'assets/Outline/folder.svg'" [size]="'14'">
+            <span> {{event.folder}} </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="no-event" [ngClass]="EventCards.length > 0 ? 'hide' : 'visible'">
+      <span class="icon" libSvgElement [appSvg]="'assets/Outline/bell.svg'" [fill-color]="'#5F6F94'">
+
+      </span>
+      <span class="message">
+          We’ll let you know when we get alerts<br> for you
+      </span>
+
+    </div>
+
+  </div>
+  <button id="floatingButton" title="Go to Top">&#8593;</button>
+</div>
